@@ -1,5 +1,5 @@
-body {
-    background: black;
+#body {
+    background: #f8e7d1;
 }
 
 .calculator {
@@ -52,10 +52,6 @@ body {
     color: #ff7433;
 }
 
-#equal button{
-    background-color: #ff7433;
-    color: white;
-}
 
 #equal button{
     background-color: #ff7433;
