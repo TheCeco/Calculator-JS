@@ -52,13 +52,17 @@
     color: #ff7433;
 }
 
+.operation button:disabled {
+    color: #f8e7d1;
+}
 
-#equal button{
+
+#equal-button button{
     background-color: #ff7433;
     color: white;
     text-align: center;
 }
 
-#equal button:hover {
+#equal-button button:hover {
     padding: 5px;
 }
