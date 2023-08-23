@@ -1,68 +1,167 @@
 #body {
-    background: #f8e7d1;
+  background: #f8e7d1;
 }
 
 .calculator {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 5px solid #ff7433;
-    padding: 25px;
-    size: 100px;
-    border-radius: 10px;
-    background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #ff7433;
+  padding: 25px;
+  size: 100px;
+  border-radius: 10px;
+  background: white;
+  transition: display 0.5s ease-in-out;
 }
 
 .input {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-} 
-
-
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
 }
 
-.button button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 20px;
-}
-  
-
-.button button:hover {
-    background-color: #bebebe;
+.button,
+.advanced-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.operation button{
-    color: #ff7433;
+.button button,
+.advanced-button button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 20px;
+}
+
+.button button:hover,
+.advanced-button button:hover {
+  background-color: #bebebe;
+}
+
+.operation button {
+  color: #ff7433;
 }
 
 .operation button:disabled {
-    color: #f8e7d1;
+  color: #f8e7d1;
 }
 
-
-#equal-button button{
-    background-color: #ff7433;
-    color: white;
-    text-align: center;
+#equal-button button {
+  background-color: #ff7433;
+  color: white;
+  text-align: center;
 }
 
 #equal-button button:hover {
-    padding: 5px;
+  -webkit-animation: scale-down-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: scale-down-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+@keyframes scale-down-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+
+#check {
+  display: none;
+}
+
+#check-label {
+  content: "";
+  border: 3px solid #ff7433;
+  width: 50%;
+  height: 50%;
+  border-radius: 3px;
+}
+
+#check-label:hover {
+  -webkit-animation: rotate-scale-down 0.65s linear both;
+  animation: rotate-scale-down 0.65s linear both;
+  background-color: white;
+}
+
+.advanced-buttons {
+  opacity: 0;
+  display: none;
+  transition: opacity 5s, display 5s;
+}
+
+.calculator:has(input:checked) .advanced-buttons {
+  opacity: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  position: relative;
+  top: -10px;
+  left: -10px;
+}
+
+.calculator:has(input:checked) {
+  opacity: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@initial {
+  .calculator:has(input:checked) .advanced-buttons {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes rotate-scale-down {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(0.5) rotateZ(180deg);
+    transform: scale(0.5) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}
+@keyframes rotate-scale-down {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(0.5) rotateZ(180deg);
+    transform: scale(0.5) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
 }
