@@ -96,17 +96,51 @@
 }
 
 #check-label {
-  content: "";
-  border: 3px solid #ff7433;
   width: 50%;
   height: 50%;
-  border-radius: 3px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
 }
 
-#check-label:hover {
-  -webkit-animation: rotate-scale-down 0.65s linear both;
-  animation: rotate-scale-down 0.65s linear both;
-  background-color: white;
+#check-label span, #check-label::after, #check-label::before {
+  content: '';
+  height: 4px;
+  width: 100%;
+  background-color: #ff7433;
+  transition: width 300ms, background-color 300ms;
+}
+
+#check-label::after, #check-label::before {
+  content: '';  
+}
+
+#check-label:hover::after, #check-label:hover::before {
+  width: 70%;
+}
+
+#check-label:hover span {
+  width: 20%;
+}
+
+.calculator:has(input:checked) #check-label span {
+  width: 0;
+}
+
+.calculator:has(input:checked) #check-label::before {
+  background-color: #ff0000;
+  width: 70%;
+  transform: rotate(30deg) translateY(10px) translateX(4px);
+}
+
+.calculator:has(input:checked) #check-label::after {
+  background-color: #ff0000;
+  width: 70%;
+  transform: rotate(-30deg) translateY(-10px) translateX(4px);
 }
 
 .advanced-buttons {
@@ -129,33 +163,4 @@
   opacity: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-}
-
-@-webkit-keyframes rotate-scale-down {
-  0% {
-    -webkit-transform: scale(1) rotateZ(0);
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    -webkit-transform: scale(1) rotateZ(180deg);
-    transform: scale(1) rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: scale(1) rotateZ(360deg);
-    transform: scale(1) rotateZ(360deg);
-  }
-}
-@keyframes rotate-scale-down {
-  0% {
-    -webkit-transform: scale(1) rotateZ(0);
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    -webkit-transform: scale(1) rotateZ(180deg);
-    transform: scale(1) rotateZ(180deg);
-  }
-  100% {
-    -webkit-transform: scale(1) rotateZ(360deg);
-    transform: scale(1) rotateZ(360deg);
-  }
 }

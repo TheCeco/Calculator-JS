@@ -91,12 +91,11 @@ const numberBtns = document.getElementsByClassName("number");
 const pattern = /^[0]$/;
 for (let i = 0; i < numberBtns.length; i++) {
   numberBtns[i].addEventListener("click", function () {
-    if (operation) {
-      if (Number(input.value) === num1) {
-        input.value = numberBtns[i].children[0].textContent;
-      } else {
-        input.value += numberBtns[i].children[0].textContent;
-      }
+    if (advancedOp) {
+      input.value = input.value.slice(0, input.value.length - 1)
+      input.value += numberBtns[i].children[0].textContent + ')';
+    } else if (operation) {
+      input.value += numberBtns[i].children[0].textContent;
     } else {
       if (input.value.length === 1 && input.value.match(pattern)) {
         input.value = numberBtns[i].children[0].textContent;
@@ -194,7 +193,7 @@ const advancedOperations = document.getElementsByClassName("advanced-button");
 for (let i = 0; i < 4; i++) {
   advancedOperations[i].addEventListener("click", function () {
     let operationName = advancedOperations[i].children[0].textContent;
-    input.value = operationName + "(";
+    input.value = operationName + "()";
     advancedOp = operationName;
   });
 }
